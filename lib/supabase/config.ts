@@ -10,19 +10,23 @@ export function sanitizeSupabaseUrl(rawUrl?: string): string {
 }
 
 export function getSupabaseUrl(): string {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://tcrkavwcbklvnbzorjnz.supabase.co'
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
   return sanitizeSupabaseUrl(url)
 }
 
 export function getSupabaseAnonKey(): string {
-  return (
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    'sb_publishable_l1xUodZaI3mrpio4ZFEujA_jF0IVtjB'
-  ).trim()
+  return (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim()
 }
 
 export function isSupabaseConfigured(): boolean {
   const url = getSupabaseUrl()
   const key = getSupabaseAnonKey()
-  return Boolean(url && key && !key.includes('your_anon_key'))
+  return Boolean(
+    url &&
+    key &&
+    !url.includes('placeholder') &&
+    !url.includes('your-project') &&
+    !key.includes('your_anon_key') &&
+    !key.includes('placeholder')
+  )
 }

@@ -4,6 +4,7 @@ import './globals.css'
 import { AppProviders } from '@/components/providers'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://new-vision-dental-products.vercel.app'),
   title: 'New Vision Dental Products | Considered Equipment for Modern Dentistry',
   description: 'Discover thoughtfully curated dental equipment, diagnostic imaging, and premium consumables for practices built around exceptional care.',
   icons: {

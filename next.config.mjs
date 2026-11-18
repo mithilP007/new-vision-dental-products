@@ -11,11 +11,11 @@ const nextConfig = {
       ],
     }]
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     unoptimized: true,
+  },
+  experimental: {
+    agentUpgrade: false,
   },
 }
 

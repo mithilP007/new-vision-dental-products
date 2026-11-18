@@ -4,8 +4,8 @@ import { getSupabaseUrl, getSupabaseAnonKey } from './config'
 
 export async function createClient() {
   const cookieStore = await cookies()
-  const supabaseUrl = getSupabaseUrl()
-  const supabaseAnonKey = getSupabaseAnonKey()
+  const supabaseUrl = getSupabaseUrl() || 'https://placeholder.supabase.co'
+  const supabaseAnonKey = getSupabaseAnonKey() || 'placeholder-anon-key'
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {

@@ -7,8 +7,8 @@ import { getSupabaseUrl, getSupabaseAnonKey } from './config'
  * NEVER expose this or import this in client-side components.
  */
 export function createAdminClient() {
-  const supabaseUrl = getSupabaseUrl()
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || getSupabaseAnonKey()
+  const supabaseUrl = getSupabaseUrl() || 'https://placeholder.supabase.co'
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || getSupabaseAnonKey() || 'placeholder-key'
 
   return createClient(supabaseUrl, serviceKey, {
     auth: {
