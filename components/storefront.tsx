@@ -14,7 +14,16 @@ import {
   Smile,
   Cpu,
 } from 'lucide-react'
-import DentalUnitScene from './dental-unit-scene'
+import dynamic from 'next/dynamic'
+
+const DentalUnitScene = dynamic(() => import('./dental-unit-scene'), {
+  ssr: false,
+  loading: () => (
+    <div className="dental-canvas flex items-center justify-center bg-stone-950/40 rounded-2xl border border-stone-800/60" style={{ minHeight: '400px' }}>
+      <div className="text-stone-400 text-sm tracking-wide">Loading 3D Experience...</div>
+    </div>
+  ),
+})
 import { BrandPartnersSection } from './brand-partners-section'
 import { TrustStatisticsSection } from './trust-statistics-section'
 import { SiteHeader } from './site-header'

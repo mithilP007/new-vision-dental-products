@@ -4,7 +4,7 @@ import { Suspense, useRef, useState, useEffect, useMemo, useCallback } from 'rea
 import * as THREE from 'three'
 import { Canvas, useThree, useLoader } from '@react-three/fiber'
 import { Environment, OrbitControls, ContactShadows } from '@react-three/drei'
-import { GLTFLoader } from 'three-stdlib'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 /**
  * Shared loader configuration that registers a parser plugin.
@@ -304,5 +304,7 @@ export default function DentalUnitScene() {
 
 export { DentalUnitScene }
 
-// Preload the model using the same configureLoader function
-useLoader.preload(GLTFLoader, '/modelchair.glb', configureLoader)
+// Preload the model in browser only
+if (typeof window !== 'undefined') {
+  useLoader.preload(GLTFLoader, '/modelchair.glb', configureLoader)
+}

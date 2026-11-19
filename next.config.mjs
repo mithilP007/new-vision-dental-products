@@ -14,9 +14,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    agentUpgrade: false,
-  },
 }
 
 export default nextConfig
